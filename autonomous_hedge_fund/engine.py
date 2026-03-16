@@ -29,10 +29,15 @@ class AutonomousHedgeFund:
             "positions": {},
             "leverage": 1.0,
         }
+        self._equity_history: list[dict[str, float]] = []
 
     @property
     def state(self) -> Dict[str, Any]:
         return self._state
+
+    @property
+    def equity_history(self) -> list[dict[str, float]]:
+        return self._equity_history
 
     def _build_orders_from_portfolio(
         self, portfolio: Iterable[tuple[Dict[str, Any], float]]
@@ -75,4 +80,9 @@ class AutonomousHedgeFund:
             return
 
         self.execution_engine.execute_orders(approved)
+
+        # naive equity history update (placeholder)
+        equity = float(self._state.get("equity", 0.0))
+        t = len(self._equity_history)
+        self._equity_history.append({"t": float(t), "equity": equity})
 
