@@ -1,0 +1,24 @@
+{
+  "mode": "backtest",
+  "logging": {
+    "level": "INFO",
+    "file": "logs/uatp.log"
+  },
+  "risk": {
+    "max_daily_loss_pct": 0.03,
+    "max_symbol_exposure_pct": 0.10,
+    "max_leverage": 3.0,
+    "risk_per_trade_pct": 0.01
+  },
+  "portfolio": {
+    "max_weight_per_strategy": 0.10,
+    "min_weight_per_strategy": 0.0
+  },
+  "backtest": {
+    "ray": {
+      "address": null,
+      "num_cpus": null,
+      "num_gpus": null
+    }
+  }
+}
